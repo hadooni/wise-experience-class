@@ -29,11 +29,11 @@ const menus = [
   },
 ];
 
-const Footer = () => {
+const BottomNavigation = () => {
   const pathName = usePathname();
 
   return (
-    <footer className="fixed bottom-0 h-20 w-full border-t">
+    <section className="fixed bottom-0 h-20 w-full border-t">
       <ul className="flex justify-around items-center h-full">
         {menus.map((menu) => (
           <MenuItem
@@ -43,8 +43,8 @@ const Footer = () => {
           />
         ))}
       </ul>
-    </footer>
+    </section>
   );
 };
 
-export default Footer;
+export default BottomNavigation;
