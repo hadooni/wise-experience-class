@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 type MenuItemProps = {
   href: string;
@@ -26,6 +25,7 @@ const MenuItem = ({
             width={35}
             height={35}
             alt={text}
+            style={{ width: "auto", height: "auto" }}
           />
           <span
             className={`text-xs ${
