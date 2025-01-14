@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Header = () => {
   return (
-    <div className="h-16 w-full border-b fixed flex justify-center items-center">
+    <div className="h-16 w-full border-b fixed flex justify-center items-center bg-white z-10">
       <Image
         src={"/icons/menu.svg"}
         alt="menu"

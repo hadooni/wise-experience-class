@@ -33,7 +33,7 @@ const BottomNavigation = () => {
   const pathName = usePathname();
 
   return (
-    <section className="fixed bottom-0 h-20 w-full border-t">
+    <section className="fixed bottom-0 h-20 w-full border-t bg-white">
       <ul className="flex justify-around items-center h-full">
         {menus.map((menu) => (
           <MenuItem
