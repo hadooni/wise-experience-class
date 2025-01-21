@@ -8,6 +8,10 @@ const MainCarousel = () => {
     "/images/cookies.jpg",
     "/images/gingerbread.jpg",
   ];
+  const certification = [
+    "/images/certification_mark.svg",
+    "/images/certification_mark2.svg",
+  ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -36,6 +40,11 @@ const MainCarousel = () => {
             className="w-full h-full object-cover"
             priority
           />
+          <div className="absolute right-4 flex bottom-4 gap-2">
+            {certification.map((mark, index) => (
+              <Image key={index} src={mark} alt="mark" width={50} height={50} />
+            ))}
+          </div>
         </div>
       ))}
 
