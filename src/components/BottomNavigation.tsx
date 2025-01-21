@@ -1,7 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import MenuItem from "./MenuItem";
-import { URLS } from "@/constants/url";
+import { HIDDEN_PATHS, URLS } from "@/constants/url";
 
 const menus = [
   {
@@ -31,16 +31,20 @@ const menus = [
 ];
 
 const BottomNavigation = () => {
-  const pathName = usePathname();
+  const pathname = usePathname();
 
-  return (
+  const shouldHideNavigation = () => {
+    return HIDDEN_PATHS.hiddenNavigation.includes(pathname);
+  };
+
+  return shouldHideNavigation() ? null : (
     <section className="fixed bottom-0 h-20 w-full border-t bg-white">
       <ul className="flex justify-around items-center h-full">
         {menus.map((menu) => (
           <MenuItem
             key={menu.href}
             {...menu}
-            isActive={pathName === menu.href}
+            isActive={pathname === menu.href}
           />
         ))}
       </ul>

@@ -1,9 +1,17 @@
-import { URLS } from "@/constants/url";
+"use client";
+import { HIDDEN_PATHS, URLS } from "@/constants/url";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
-  return (
+  const pathname = usePathname();
+
+  const shouldHideHeader = () => {
+    return HIDDEN_PATHS.hiddenHeader.includes(pathname);
+  };
+
+  return shouldHideHeader() ? null : (
     <div className="h-16 w-full border-b fixed flex justify-center items-center bg-white z-10">
       <Image
         src={"/icons/menu.svg"}
