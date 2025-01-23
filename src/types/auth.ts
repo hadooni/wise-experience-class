@@ -12,7 +12,5 @@ export type SignInTypes = {
 
 export type AuthState = {
   isAuthenticated: boolean;
-  nickname: string;
   setIsAuthenticated: (isAuthenticated: boolean) => void;
-  setNickname: (nickname: string) => void;
 };
