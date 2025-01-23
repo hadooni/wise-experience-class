@@ -7,19 +7,12 @@ import { usePathname } from "next/navigation";
 const Header = () => {
   const pathname = usePathname();
 
-  const shouldHideHeader = () => {
-    return HIDDEN_PATHS.hiddenHeader.includes(pathname);
-  };
+  if (HIDDEN_PATHS.hiddenHeader.includes(pathname)) {
+    return null;
+  }
 
-  return shouldHideHeader() ? null : (
+  return (
     <div className="h-16 w-full border-b fixed flex justify-center items-center bg-white z-10">
-      <Image
-        src={"/icons/menu.svg"}
-        alt="menu"
-        width={30}
-        height={30}
-        className="fixed left-6 cursor-pointer"
-      />
       <Link href={URLS.home}>
         <Image src={"/images/logo.svg"} alt="logo" width={80} height={35} />
       </Link>

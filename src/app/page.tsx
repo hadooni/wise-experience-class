@@ -1,10 +1,18 @@
 import MainCarousel from "@/components/MainCarousel";
 import OpenClassCard from "@/components/OpenClassCard";
 import UpButton from "@/components/UpButton";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="pt-16 pb-32">
+      <Image
+        src={"/icons/menu.svg"}
+        alt="menu"
+        width={30}
+        height={30}
+        className="fixed left-6 cursor-pointer"
+      />
       <MainCarousel />
       <main className="flex flex-col items-center">
         <div className="w-full max-w-[21rem]">

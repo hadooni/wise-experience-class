@@ -1,43 +1,21 @@
 "use client";
 import { usePathname } from "next/navigation";
 import MenuItem from "./MenuItem";
-import { HIDDEN_PATHS, URLS } from "@/constants/url";
-
-const menus = [
-  {
-    href: URLS.home,
-    icon: "home",
-    clickedIcon: "home_fill",
-    text: "홈",
-  },
-  {
-    href: URLS.search,
-    icon: "search",
-    clickedIcon: "search_fill",
-    text: "검색",
-  },
-  {
-    href: URLS.applyList,
-    icon: "list",
-    clickedIcon: "list_fill",
-    text: "신청",
-  },
-  {
-    href: URLS.myPage,
-    icon: "profile",
-    clickedIcon: "profile_fill",
-    text: "마이",
-  },
-];
+import { HIDDEN_PATHS } from "@/constants/url";
+import { useAuthStore } from "@/store/useAuthStore";
+import { NAVIGATION_MENUS } from "@/constants/navigation";
 
 const BottomNavigation = () => {
+  const { isAuthenticated } = useAuthStore();
   const pathname = usePathname();
 
-  const shouldHideNavigation = () => {
-    return HIDDEN_PATHS.hiddenNavigation.includes(pathname);
-  };
+  const menus = NAVIGATION_MENUS(isAuthenticated);
 
-  return shouldHideNavigation() ? null : (
+  if (HIDDEN_PATHS.hiddenNavigation.includes(pathname)) {
+    return null;
+  }
+
+  return (
     <section className="fixed bottom-0 h-20 w-full border-t bg-white">
       <ul className="flex justify-around items-center h-full">
         {menus.map((menu) => (
