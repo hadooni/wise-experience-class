@@ -2,14 +2,13 @@
 import { usePathname } from "next/navigation";
 import MenuItem from "./MenuItem";
 import { HIDDEN_PATHS } from "@/constants/url";
-import { useAuthStore } from "@/store/useAuthStore";
+import { useSession } from "next-auth/react";
 import { NAVIGATION_MENUS } from "@/constants/navigation";
 
 const BottomNavigation = () => {
-  const { isAuthenticated } = useAuthStore();
+  const { data: session } = useSession();
   const pathname = usePathname();
-
-  const menus = NAVIGATION_MENUS(isAuthenticated);
+  const menus = NAVIGATION_MENUS(!!session);
 
   if (HIDDEN_PATHS.hiddenNavigation.includes(pathname)) {
     return null;

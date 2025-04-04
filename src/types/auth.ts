@@ -9,10 +9,3 @@ export type SignInTypes = {
   email: string;
   password: string;
 };
-
-export type AuthState = {
-  isAuthenticated: boolean;
-  nickname: string;
-  setIsAuthenticated: (isAuthenticated: boolean) => void;
-  setNickname: (nickname: string) => void;
-};
